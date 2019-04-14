@@ -6,10 +6,10 @@ const handleErrors = fn => async (req, res) => {
     send(res, 200, response)
   } catch (err) {
     console.error(err.stack)
-    send(res, 404, err)
+    send(res, err.statusCode || 500, { err: err.toString() })
   }
 }
 
 module.exports = {
-	handleErrors
+  handleErrors
 }

@@ -1,18 +1,24 @@
 const mongoose = require('mongoose')
-	Schema = mongoose.Schema
+const Schema = mongoose.Schema
+const { auth } = require('../config')[process.env.NODE_ENV || 'development']
 
 const userSchema = new Schema({
-	name: String,
-	email: String,
-	password: String,
-	date: {
-		createdAt: { type: Date, default: Date.now },
-		updatedAt: Date
-	},
-	image: String,
-	auth: Number
+  name: String,
+  email: String,
+  password: String,
+  date: {
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: Date
+  },
+  image: String,
+  auth: { type: Number, default: auth.user }
 })
 
-const User = mongoose.model('User', userSchema)
+let User
+try {
+  User = mongoose.model('User')
+} catch (error) {
+  User = mongoose.model('User', userSchema)
+}
 
 module.exports = User
