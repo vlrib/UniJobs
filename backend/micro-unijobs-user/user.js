@@ -126,7 +126,7 @@ const patchUser = async (req, res) => {
   let updatedUser = null
 
   const updateReq = await User.findOneAndUpdate(
-    { _id: id }, 
+    { _id: userId }, 
     toUpdate,
     { new: true },
     (err, user) => {
