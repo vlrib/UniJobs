@@ -102,6 +102,45 @@ const getUser = async (req, res) => {
 	}
 }
 
+const patchUser = async (req, res) => {
+  const { id, password, image, name } = await json(req)
+
+  const jwt = await getJwtAuth(req, res)
+
+  if (!isAdmin(jwt) && !isUser(jwt)) throw createError(403, 'Forbidden')
+
+  if (!id && isAdmin(jwt)) throw createError(400, 'Bad params. User id is required')
+
+  if (!password && !image && !name) throw createError(400, 'Bad params. Password, image or name is required')
+
+  const hashedPass = password && await hashPassword(password)
+
+  const toUpdate = Object.assign({},
+    hashedPass && { password: hashedPass },
+    image && { image },
+    name && { name }
+  )
+
+  const userId = isAdmin(jwt) ? id : jwt.id
+  
+  let updatedUser = null
+
+  const updateReq = await User.findOneAndUpdate(
+    { _id: id }, 
+    toUpdate,
+    { new: true },
+    (err, user) => {
+      if (err) throw createError(500, 'Could not update user in db.')
+
+      if (!user) throw createError(404, 'User does not exist')
+
+      updatedUser = user
+      return updatedUser
+    })
+
+  return updatedUser
+}
+
 const deleteUser = async (req, res) => {
   const { id } = await json(req)
 
@@ -131,5 +170,6 @@ module.exports = {
   createUser,
   createAdmin,
   getUser,
-  deleteUser
+  deleteUser,
+  patchUser
 }

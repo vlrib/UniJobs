@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV || 'development'
 
 const BASE_URI = '/api'
 
-const { createUser, createAdmin, getUser, deleteUser } = require('./user')
+const { createUser, createAdmin, getUser, patchUser, deleteUser } = require('./user')
 const { userAuth } = require('./auth')
 
 const notFoundError = (req, res) => {
@@ -19,6 +19,7 @@ module.exports = cors(
       post(`${BASE_URI}/user`, createUser),
       post(`${BASE_URI}/user/admin`, createAdmin),
       get(`${BASE_URI}/user`, getUser),
+      patch(`${BASE_URI}/user`, patchUser),
       del(`${BASE_URI}/user`, deleteUser),
       post(`${BASE_URI}/auth/user`, userAuth),
       get('/*', notFoundError),
