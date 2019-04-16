@@ -8,9 +8,9 @@ const userSchema = new Schema({
   password: String,
   date: {
     createdAt: { type: Date, default: Date.now },
-    updatedAt: Date
+    updatedAt: { type: Date, default: Date.now }
   },
-  image: String,
+  image: { type: String, default: null },
   auth: { type: Number, default: auth.user }
 })
 

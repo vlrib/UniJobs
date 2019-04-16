@@ -33,7 +33,11 @@ const createUser = async (req, res) => {
 
   const hashedPass = await hashPassword(password)
 
-  const newUser = new User({ name, email, password: hashedPass })
+  const newUser = new User({
+   name, 
+   email, 
+   password: hashedPass
+  })
 
   const user = await newUser.save()
 	  .then(() => console.log('User saved'))
@@ -62,7 +66,11 @@ const createAdmin = async (req, res) => {
 
   const hashedPass = await hashPassword(password)
 
-  const newUser = new User({ name, email, password: hashedPass, auth: authConfig.admin })
+  const newUser = new User({
+   name, 
+   email, 
+   password: hashedPass
+  })
 
   const user = await newUser.save()
 	  .then(() => console.log('User saved'))
@@ -133,7 +141,6 @@ const patchUser = async (req, res) => {
       if (err) throw createError(500, 'Could not update user in db.')
 
       if (!user) throw createError(404, 'User does not exist')
-
       updatedUser = user
       return updatedUser
     })
