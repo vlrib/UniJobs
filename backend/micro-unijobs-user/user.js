@@ -80,34 +80,18 @@ const createAdmin = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-  const body = await json(req)
 
   const jwt = await getJwtAuth(req, res)
 
 	if (!isUser(jwt) &&	 !isAdmin(jwt)) throw createError(403, 'Forbidden')
 
-	const id = body.id
-	
-	if (id || isUser(jwt)) {
-		// If it a user, allow it to retrieve only its own info
-		const idToUse = isUser(jwt) ? jwt.id : id
-
-	  const user = await User.findById(idToUse, (err, user) => {
+	const user = await User.findById(jwt.id, (err, user) => {
 	    if (err) throw createError(500, 'Could not retrieve user from db')
 	    return user
-	  })
+	})
 
-	  return user
-	} else {
-		// Retrieve all users from db if it is admin
-		const userArr = await User.find({}, (err, users) => {
-			if (err) throw createError(500, 'Could not retrieve users from db')
-			return users
-		})
+	return user
 
-		return userArr
-
-	}
 }
 
 const patchUser = async (req, res) => {
