@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_nome"
+            android:fontFamily="@font/mont"
+            android:title="" />
+        <item
+            android:id="@+id/nav_home"
+            android:fontFamily="@font/mont"
+            android:title="MEUS SERVIÇOS" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="PERFIL" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="NOTIFICAÇÕES" />
+        <item
+            android:id="@+id/nav_tools"
+            android:title="CONFIGURAÇÕES" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:title="LOGOUT" />
+        </menu>
+    </item>
+
+</menu>
