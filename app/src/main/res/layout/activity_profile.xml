@@ -21,8 +21,8 @@
         android:background="@drawable/bgmenu"
         android:fitsSystemWindows="true"
         app:itemTextAppearance="@style/Style_TextView"
+        app:headerLayout="@layout/activity_profile_menuheader"
         app:menu="@menu/activity_profile_drawer"
-
         />
 
 </android.support.v4.widget.DrawerLayout>

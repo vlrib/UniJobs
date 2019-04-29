@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     DefaultResponse defaultResponse = response.body();
                     defaultResponse.getEmail();
 
-                    //chamada para fazer o login do usuario ja que a porra do backend nao me passa o token no registro por "ma pratica"
+
                     Call<LoginResponse> call2 = RetrofitClient
                             .getInstance().getApi().userLogin(userLogin);
                     call2.enqueue(new Callback<LoginResponse>() {

@@ -38,13 +38,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="80dp"
-                android:fontFamily="@font/lora"
+                android:fontFamily="@font/lato"
                 android:gravity="center"
                 android:lineSpacingExtra="4.5sp"
                 android:text="Você tem algum talento escondido?\nGanhe dinheiro com isso!"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
-
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:id="@+id/linearLayout"

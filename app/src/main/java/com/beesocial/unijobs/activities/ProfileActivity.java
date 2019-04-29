@@ -1,6 +1,5 @@
 package com.beesocial.unijobs.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -14,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.beesocial.unijobs.R;
 import com.beesocial.unijobs.models.User;
@@ -22,11 +20,9 @@ import com.beesocial.unijobs.storage.SharedPrefManager;
 
 public class ProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    protected ActionBarDrawerToggle drawerToggle;
     MenuItem nav_nome;
-    Intent intent = getIntent();
     User user;
-    TextView textProfileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +59,7 @@ public class ProfileActivity extends AppCompatActivity
 
 
         user = SharedPrefManager.getInstance(this).getUser();
-        //como eu nao espero o servidor me dar a resposta para mudar a instancia, esperar ate pegar o user para desenhar o nome
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                // Actions to do after 10 seconds
-            }
-        }, 10000);
         stringBuilder.append("Olá ");
         stringBuilder.append(user.getName());
         nav_nome.setTitle(stringBuilder);
