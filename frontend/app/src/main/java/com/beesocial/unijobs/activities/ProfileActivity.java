@@ -17,11 +17,17 @@ import android.view.View;
 import com.beesocial.unijobs.R;
 import com.beesocial.unijobs.models.User;
 import com.beesocial.unijobs.storage.SharedPrefManager;
+import com.bumptech.glide.Glide;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     MenuItem nav_nome;
+    CircleImageView imageProfile;
     User user;
+    View header;
+
 
 
     @Override
@@ -40,16 +46,14 @@ public class ProfileActivity extends AppCompatActivity
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
         Menu menu = navigationView.getMenu();
-        nav_nome = menu.findItem(R.id.nav_nome);
-
-
+        header = navigationView.getHeaderView(0);
+        //nav_nome = menu.findItem(R.id.nav_nome);
     }
 
     @Override
@@ -60,10 +64,9 @@ public class ProfileActivity extends AppCompatActivity
 
         user = SharedPrefManager.getInstance(this).getUser();
         Handler handler = new Handler();
-        stringBuilder.append("Olá ");
+        /*stringBuilder.append("Olá ");
         stringBuilder.append(user.getName());
-        nav_nome.setTitle(stringBuilder);
-
+        nav_nome.setTitle(stringBuilder);*/
         handler.removeCallbacksAndMessages(null);
     }
 
@@ -82,6 +85,11 @@ public class ProfileActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.profile, menu);
+
+
+        imageProfile = (CircleImageView) header.findViewById(R.id.imageProfile);
+        Glide.with(this).load("https://elaele.com.br/img/anonimo.png").placeholder(R.drawable.ic_loading).dontAnimate().into(imageProfile);
+
         return true;
     }
 
@@ -108,13 +116,13 @@ public class ProfileActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_perfil) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_serv) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_not) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_config) {
 
         }
 

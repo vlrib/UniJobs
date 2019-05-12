@@ -4,29 +4,31 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_nome"
-            android:fontFamily="@font/mont"
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_homec"
             android:title="" />
         <item
-            android:id="@+id/nav_gallery"
-            android:title="PERFIL" />
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_profile"
+            android:title="" />
         <item
-            android:id="@+id/nav_home"
-            android:fontFamily="@font/mont"
-            android:title="MEUS SERVIÇOS" />
+            android:id="@+id/nav_serv"
+            android:icon="@drawable/ic_cart"
+            android:title="" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:title="NOTIFICAÇÕES" />
+            android:id="@+id/nav_not"
+            android:icon="@drawable/ic_notifications"
+            android:title="" />
         <item
-            android:id="@+id/nav_tools"
-            android:title="CONFIGURAÇÕES" />
+            android:id="@+id/nav_config"
+            android:icon="@drawable/ic_settings"
+            android:title="" />
     </group>
-
     <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:title="LOGOUT" />
+                android:id="@+id/nav_logout"
+                android:title="" />
         </menu>
     </item>
 

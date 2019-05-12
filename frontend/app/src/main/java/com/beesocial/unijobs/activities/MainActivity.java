@@ -146,7 +146,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                 @Override
                                 public void onFailure(Call<DefaultResponse> calltargetResponce, Throwable t) {
-
+                                    snackbar = Snackbar
+                                            .make(v, "Erro na conexão com o servidor, tente novamente", Snackbar.LENGTH_LONG);
+                                    snackbar.show();
                                 }
                             });
 
@@ -154,7 +156,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         @Override
                         public void onFailure(Call<LoginResponse> call2, Throwable t) {
-
+                            snackbar = Snackbar
+                                    .make(v, "Erro na conexão com o servidor, tente novamente", Snackbar.LENGTH_LONG);
+                            snackbar.show();
                         }
                     });
                 } catch (Exception e) {
@@ -175,7 +179,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFailure(Call<DefaultResponse> call, Throwable t) {
-
+                snackbar = Snackbar
+                        .make(v, "Erro na conexão com o servidor, tente novamente", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
 

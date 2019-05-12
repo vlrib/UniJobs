@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onResponse(Call<DefaultResponse> calltargetResponce, retrofit2.Response<DefaultResponse> responsee) {
                             DefaultResponse UserResponse = responsee.body();
-                            Log.d("respostaLogin", "deu bom?");
+                            Log.d("respostaLogin", "Login ");
                             Log.d("respostaLogin", UserResponse.getEmail());
                             userComplete = new User(UserResponse.getId(), UserResponse.getEmail(), UserResponse.getName(), UserResponse.getImage(), UserResponse.getPassword());
                             Log.d("respostaLogin", userComplete.getEmail());
@@ -124,7 +124,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         @Override
                         public void onFailure(Call<DefaultResponse> calltargetResponce, Throwable t) {
-                            Log.d("respostaLogin", "deu ruim");
+                            snackbar = Snackbar
+                                    .make(v, "Erro na conexão com o servidor, tente novamente", Snackbar.LENGTH_LONG);
+                            snackbar.show();
                         }
                     });
                     Log.d("tokeee", loginResponse.getToken());
@@ -152,7 +154,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+                snackbar = Snackbar
+                        .make(v, "Erro na conexão com o servidor, tente novamente", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
     }

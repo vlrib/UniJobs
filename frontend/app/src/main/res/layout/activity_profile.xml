@@ -15,12 +15,15 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/bgmenu"
+        android:background="#292933"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:fitsSystemWindows="true"
         app:itemTextAppearance="@style/Style_TextView"
+        app:itemIconTint="#fff"
         app:headerLayout="@layout/activity_profile_menuheader"
         app:menu="@menu/activity_profile_drawer"
         />
