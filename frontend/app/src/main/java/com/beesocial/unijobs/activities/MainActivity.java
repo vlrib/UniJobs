@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.beesocial.unijobs.R;
 import com.beesocial.unijobs.api.Api;
@@ -101,13 +100,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editTextImage.requestFocus();
             return;
         }
+
+        //chamada para criar o usuario
+        callBackend(v, email, name, password);
+    }
+
+    private void callBackend(final View v, String email, String name, String password) {
         userRegister = new UserRegister(email, name, password);
         userLogin = new UserLogin(email, password);
 
         Call<DefaultResponse> call = RetrofitClient
                 .getInstance().getApi().createUser(userRegister);
-
-        //chamada para criar o usuario
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
@@ -122,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onResponse(Call<LoginResponse> call2, Response<LoginResponse> response2) {
                             LoginResponse loginResponse = response2.body();
-                            Toast.makeText(MainActivity.this, loginResponse.getToken(), Toast.LENGTH_LONG).show();
+
+                            //Toast.makeText(MainActivity.this, loginResponse.getToken(), Toast.LENGTH_LONG).show();
 
                             Retrofit retrofit = new Retrofit.Builder()
                                     .baseUrl("https://micro-unijobs-user.felipetiagodecarli.now.sh/api/")
@@ -187,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -195,11 +198,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 userSignUp(v);
                 break;
             case R.id.textViewLogin:
-
                 startActivity(new Intent(this, LoginActivity.class));
-
+                break;
+            case R.id.editTextImage:
 
                 break;
+
         }
     }
 }

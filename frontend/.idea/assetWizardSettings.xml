@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_loading" />
-                            <entry key="sourceFile" value="C:\Users\refael\Desktop\UniJobs UI\icons\loading.svg" />
+                            <entry key="outputName" value="ic_settings" />
+                            <entry key="sourceFile" value="C:\Users\refael\Desktop\UniJobs UI\icons\settings.svg" />
                           </map>
                         </option>
                       </PersistentState>

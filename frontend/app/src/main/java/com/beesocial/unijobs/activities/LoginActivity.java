@@ -8,7 +8,6 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.beesocial.unijobs.R;
 import com.beesocial.unijobs.api.Api;
@@ -87,7 +86,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editTextPassword.requestFocus();
             return;
         }
+        callBackend(v, email, password);
+        
+    }
 
+    private void callBackend(final View v, String email, String password) {
         model_obj = new UserLogin(email, password);
 
         Call<LoginResponse> call = RetrofitClient
@@ -130,7 +133,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     });
                     Log.d("tokeee", loginResponse.getToken());
-                    Toast.makeText(LoginActivity.this, loginResponse.getError(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(LoginActivity.this, loginResponse.getError(), Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     checkNetwork = new CheckNetwork();
                     if (checkNetwork.haveNetworkConnection(LoginActivity.this)) {
